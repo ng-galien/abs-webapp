@@ -1,0 +1,49 @@
+Index: .
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .	(revision f851efcf70a3b4f13777da9bb50283403e1e1153)
++++ .	(date 1552990395000)
+@@ -1,1 +1,1 @@
+-1e5c70d9e2f99025048d0ad0fde1ef95e693bffc
+\ No newline at end of file
++e155ee97e215649cd82eec7d2e75145d912bcbb7
+\ No newline at end of file
+Index: axelor-base/src/main/resources/views/Product.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- axelor-base/src/main/resources/views/Product.xml	(date 1554571809000)
++++ axelor-base/src/main/resources/views/Product.xml	(date 1553365503000)
+@@ -228,6 +228,9 @@
+ 				          	</editor>
+ 	        			</field>
+ 	        			<button name="generateProductVariantBtn" title="Generate product variants" onClick="save,action-product-method-generate-product-variant"/>
++						<button name="generateSmartVariantBtn" title="Generate product smart" onClick="save,action-product-method-generate-product-smart"/>
++						<button name="deleteVariantBtn" title="Delete all variants" onClick="save,action-product-method-delete-variant"/>
++						<button name="printVariantBtn" title="Print variants catalog" onClick="save,action-product-method-print-variant"/>
+ 						<field name="manageVariantPrice"/>
+ 	        			<panel-dashlet name="productVariantPanel" colSpan="12" action="action-product-view-product-variant" showIf="id" />
+ 	      			</panel>
+@@ -494,6 +497,19 @@
+ 	<action-method name="action-product-method-generate-product-variant" >
+ 		<call class="com.axelor.apps.base.web.ProductController" method="generateProductVariants"/>
+ 	</action-method>
++	
++	<action-method name="action-product-method-generate-product-smart" >
++		<call class="com.axelor.apps.bike.web.ProductGeneratorController" method="generateSmartVariants"/>
++	</action-method>
++	<action-method name="action-product-method-delete-variant" >
++		<call class="com.axelor.apps.bike.web.ProductGeneratorController" method="deleteBomVariants"/>
++	</action-method>
++	<action-method name="action-product-method-print-variant" >
++		<call class="com.axelor.apps.bike.web.ProductGeneratorController" method="printVariantCatalog"/>
++	</action-method>
++	<action-method name="action-product-method-test-query" >
++		<call class="com.axelor.apps.bike.web.ProductGeneratorController" method="testQuery"/>
++	</action-method>
+ 	
+ 	<action-method name="action-product-method-update-products-prices" >
+ 		<call class="com.axelor.apps.base.web.ProductController" method="updateProductsPrices"/>
